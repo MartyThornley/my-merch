@@ -1,5 +1,6 @@
 import { YoutubeIcon, InstagramIcon as TiktokIcon, InstagramIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 
 export function Step1({ formData, updateFormData, nextStep }) {
   const creatorTypes = [
@@ -16,18 +17,24 @@ export function Step1({ formData, updateFormData, nextStep }) {
           <Button
             key={type}
             variant={formData.creatorType === type ? 'default' : 'outline'}
-            className="flex flex-col items-center p-4"
+            className={cn(
+              'flex flex-col items-center py-6 h-auto gap-3',
+              formData.creatorType === type ? 'bg-purple-600 hover:bg-purple-700' : 'hover:bg-purple-50'
+            )}
             onClick={() => updateFormData({ creatorType: type })}
           >
-            <Icon className="w-8 h-8 mb-2" />
-            <span>{type}</span>
+            <Icon className="w-6 h-6" />
+            <span className="text-sm font-medium">{type}</span>
           </Button>
         ))}
       </div>
-      <Button onClick={nextStep} disabled={!formData.creatorType} className="w-full">
+      <Button 
+        onClick={nextStep} 
+        disabled={!formData.creatorType} 
+        className="w-full bg-purple-600 hover:bg-purple-700"
+      >
         Next
       </Button>
     </div>
   )
 }
-
