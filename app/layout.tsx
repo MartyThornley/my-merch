@@ -13,7 +13,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <html lang="en">
-      <body className="bg-gradient-to-br from-purple-400 via-pink-500 to-red-500">
+      <body>
         <div className="flex h-screen">
           <Navigation />
           <main className="flex-1 overflow-y-auto p-6">
