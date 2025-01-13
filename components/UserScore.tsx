@@ -9,7 +9,6 @@ export function UserScore() {
   const [level, setLevel] = useState(1)
 
   useEffect(() => {
-    // Simulate score increase over time
     const timer = setInterval(() => {
       setScore((prevScore) => {
         const newScore = prevScore + 1
@@ -24,13 +23,12 @@ export function UserScore() {
   }, [])
 
   return (
-    <div className="flex items-center justify-between mb-4 bg-gray-100 p-3 rounded-lg">
-      <div className="flex items-center">
-        <Badge variant="outline" className="mr-2">Level {level}</Badge>
-        <Progress value={score % 100} className="w-32" />
+    <div className="flex items-center justify-between mb-4 bg-gray-50 p-3 rounded-lg">
+      <div className="flex items-center gap-3">
+        <Badge variant="outline" className="bg-white">Level {level}</Badge>
+        <Progress value={score % 100} className="w-24 md:w-32" />
       </div>
-      <div className="font-bold text-lg">{score} pts</div>
+      <div className="font-bold text-base md:text-lg text-purple-600">{score} pts</div>
     </div>
   )
 }
-

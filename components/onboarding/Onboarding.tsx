@@ -8,6 +8,14 @@ import { Step4 } from './Step4'
 import { Step5 } from './Step5'
 import { Progress } from '@/components/ui/progress'
 
+const steps = [
+  { title: 'Creator Type', component: Step1 },
+  { title: 'Content Description', component: Step2 },
+  { title: 'Style Preferences', component: Step3 },
+  { title: 'Upload Assets', component: Step4 },
+  { title: 'Product Categories', component: Step5 },
+]
+
 export function Onboarding() {
   const [step, setStep] = useState(1)
   const [formData, setFormData] = useState({
@@ -26,17 +34,26 @@ export function Onboarding() {
   const nextStep = () => setStep((prev) => Math.min(prev + 1, 5))
   const prevStep = () => setStep((prev) => Math.max(prev - 1, 1))
 
+  const CurrentStep = steps[step - 1].component
+
   return (
     <div className="max-w-2xl mx-auto">
-      <div className="bg-white rounded-lg shadow-lg p-6">
-        <Progress value={(step / 5) * 100} className="mb-4" />
-        {step === 1 && <Step1 formData={formData} updateFormData={updateFormData} nextStep={nextStep} />}
-        {step === 2 && <Step2 formData={formData} updateFormData={updateFormData} nextStep={nextStep} prevStep={prevStep} />}
-        {step === 3 && <Step3 formData={formData} updateFormData={updateFormData} nextStep={nextStep} prevStep={prevStep} />}
-        {step === 4 && <Step4 formData={formData} updateFormData={updateFormData} nextStep={nextStep} prevStep={prevStep} />}
-        {step === 5 && <Step5 formData={formData} updateFormData={updateFormData} prevStep={prevStep} />}
+      <div className="bg-white rounded-lg p-6">
+        <div className="mb-8">
+          <div className="flex justify-between text-sm mb-2">
+            <span className="text-purple-600 font-medium">Step {step} of 5</span>
+            <span className="text-gray-500">{steps[step - 1].title}</span>
+          </div>
+          <Progress value={(step / 5) * 100} className="h-2" />
+        </div>
+        
+        <CurrentStep 
+          formData={formData} 
+          updateFormData={updateFormData} 
+          nextStep={nextStep} 
+          prevStep={prevStep} 
+        />
       </div>
     </div>
   )
 }
-
