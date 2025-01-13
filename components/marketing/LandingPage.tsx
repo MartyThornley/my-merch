@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { Link, useLocation } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, Clock, TrendingUp, DollarSign, Sparkles, Target, Zap } from 'lucide-react'
 
@@ -9,7 +9,7 @@ export function LandingPage() {
       <header className="bg-gradient-to-b from-purple-50 to-white">
         <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold text-purple-600">MyMerch.ai</h1>
-          <Link href="/dashboard">
+          <Link to="/dashboard">
             <Button className="bg-purple-600 hover:bg-purple-700">
               Enter App <ArrowRight className="ml-2 h-4 w-4" />
             </Button>

@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { Link, useLocation } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, Sparkles, Target, Zap } from 'lucide-react'
 

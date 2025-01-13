@@ -1,7 +1,6 @@
 'use client'
 
-import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
+import { Link, useLocation } from 'react-router-dom'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { Home, Lightbulb, CheckSquare, Settings, BarChart, TrendingUp } from 'lucide-react'
@@ -17,14 +16,7 @@ const navItems = [
 ]
 
 export function Navigation() {
-  const pathname = usePathname()
-  const router = useRouter()
-
-  useEffect(() => {
-    navItems.forEach(item => {
-      router.prefetch(item.href)
-    })
-  }, [router])
+  const location = useLocation()
 
   return (
     <nav className="w-64 bg-white border-r border-gray-200 p-4">
@@ -40,10 +32,10 @@ export function Navigation() {
               variant="ghost"
               className={cn(
                 'w-full justify-start text-left font-normal transition-none',
-                pathname === item.href && 'bg-purple-100 text-purple-700'
+                location.pathname === item.href && 'bg-purple-100 text-purple-700'
               )}
             >
-              <Link href={item.href} className="flex items-center">
+              <Link to={item.href} className="flex items-center">
                 <item.icon className="mr-2 h-4 w-4" />
                 {item.name}
               </Link>
