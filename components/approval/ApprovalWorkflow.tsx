@@ -1,12 +1,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-
-const mockIdeas = [
-  { id: 1, name: "Roblox-themed Gaming Headset", status: "approved" },
-  { id: 2, name: "Custom YouTube Play Button Lamp", status: "declined" },
-  { id: 3, name: "Streamer's Snack Box Subscription", status: "pending" },
-]
+import ideasData from '@/config/ideas.json'
 
 export function ApprovalWorkflow() {
   return (
@@ -20,7 +15,7 @@ export function ApprovalWorkflow() {
         {["approved", "declined", "pending"].map((status) => (
           <TabsContent key={status} value={status}>
             <div className="grid gap-4">
-              {mockIdeas
+              {ideasData.mockIdeas
                 .filter((idea) => idea.status === status)
                 .map((idea) => (
                   <Card key={idea.id}>
@@ -58,4 +53,3 @@ export function ApprovalWorkflow() {
     </div>
   )
 }
-

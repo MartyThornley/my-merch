@@ -1,8 +1,10 @@
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
+import { useNavigate } from 'react-router-dom'
 
 export function Step5({ formData, updateFormData, prevStep }) {
+  const navigate = useNavigate()
   const productCategories = [
     'Shirts',
     'Mugs',
@@ -20,10 +22,15 @@ export function Step5({ formData, updateFormData, prevStep }) {
   }
 
   const handleSubmit = () => {
-    // Here you would typically send the formData to your backend or AI service
-    console.log('Form submitted:', formData)
-    // Placeholder for AI integration
-    // generateProductIdeas(formData)
+    // Save the form data
+    const savedData = {
+      ...formData,
+      setupComplete: true
+    }
+    localStorage.setItem('creatorData', JSON.stringify(savedData))
+    
+    // Navigate to the Idea Factory
+    navigate('/dashboard')
   }
 
   return (
@@ -48,11 +55,11 @@ export function Step5({ formData, updateFormData, prevStep }) {
         <Button
           onClick={handleSubmit}
           disabled={formData.productCategories.length === 0}
+          className="bg-purple-600 hover:bg-purple-700"
         >
-          Generate Ideas
+          Complete Setup
         </Button>
       </div>
     </div>
   )
 }
-

@@ -1,0 +1,13 @@
+{
+  "defaultCreatorData": {
+    "name": "",
+    "email": "",
+    "fonts": ["Pixelated", "Futuristic", "Retro"],
+    "colors": [
+      { "name": "Vibrant Red", "value": "#FF6B6B" },
+      { "name": "Teal", "value": "#4ECDC4" },
+      { "name": "Sky Blue", "value": "#45B7D1" }
+    ],
+    "categories": ["Gaming Gear", "Stream Accessories", "Roblox Merch"]
+  }
+}

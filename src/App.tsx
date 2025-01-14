@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import { LandingPage } from '@/components/marketing/LandingPage'
 import { LoginPage } from '@/components/auth/LoginPage'
 import { Dashboard } from '@/components/dashboard/Dashboard'
@@ -22,16 +22,26 @@ function App() {
             <DashboardLayout />
           </ProtectedRoute>
         }>
-          <Route index element={<Dashboard />} />
-          <Route path="analytics" element={<Analytics />} />
-          <Route path="approval-workflow" element={<ApprovalWorkflow />} />
-          <Route path="production-tracker" element={<ProductionTracker />} />
-          <Route path="settings" element={<Settings />} />
+          <Route index element={<RequireCustomization><Dashboard /></RequireCustomization>} />
+          <Route path="analytics" element={<RequireCustomization><Analytics /></RequireCustomization>} />
+          <Route path="approval-workflow" element={<RequireCustomization><ApprovalWorkflow /></RequireCustomization>} />
+          <Route path="production-tracker" element={<RequireCustomization><ProductionTracker /></RequireCustomization>} />
+          <Route path="settings" element={<RequireCustomization><Settings /></RequireCustomization>} />
           <Route path="customization" element={<Onboarding />} />
         </Route>
       </Routes>
     </AuthProvider>
   )
+}
+
+function RequireCustomization({ children }: { children: React.ReactNode }) {
+  const hasCustomization = localStorage.getItem('creatorData') !== null
+  
+  if (!hasCustomization) {
+    return <Navigate to="/dashboard/customization" replace />
+  }
+
+  return <>{children}</>
 }
 
 export default App

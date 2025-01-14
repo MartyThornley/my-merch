@@ -1,0 +1,14 @@
+{
+  "trafficSources": [
+    { "source": "YouTube", "sales": 400 },
+    { "source": "TikTok", "sales": 300 },
+    { "source": "Instagram", "sales": 200 },
+    { "source": "Twitch", "sales": 150 },
+    { "source": "Twitter", "sales": 100 }
+  ],
+  "productData": [
+    { "name": "Roblox-themed Gaming Headset", "sales": 150, "revenue": 7500 },
+    { "name": "Custom YouTube Play Button Lamp", "sales": 100, "revenue": 3000 },
+    { "name": "Streamer's Snack Box Subscription", "sales": 75, "revenue": 1875 }
+  ]
+}

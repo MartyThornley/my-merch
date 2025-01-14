@@ -1,12 +1,14 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Step1 } from './Step1'
 import { Step2 } from './Step2'
 import { Step3 } from './Step3'
 import { Step4 } from './Step4'
 import { Step5 } from './Step5'
 import { Progress } from '@/components/ui/progress'
+import { useNavigate } from 'react-router-dom'
+import { defaultCreatorData } from '@/config/creator.json'
 
 const steps = [
   { title: 'Creator Type', component: Step1 },
@@ -18,21 +20,39 @@ const steps = [
 
 export function Onboarding() {
   const [step, setStep] = useState(1)
-  const [formData, setFormData] = useState({
-    creatorType: '',
-    contentDescription: '',
-    fontPreference: '',
-    colorPreference: '',
-    images: [],
-    productCategories: [],
+  const navigate = useNavigate()
+  const [formData, setFormData] = useState(() => {
+    const savedData = localStorage.getItem('creatorData')
+    return savedData ? JSON.parse(savedData) : {
+      creatorType: '',
+      contentDescription: '',
+      fontPreference: '',
+      colorPreference: '',
+      images: [],
+      productCategories: [],
+    }
   })
 
   const updateFormData = (data: Partial<typeof formData>) => {
-    setFormData((prev) => ({ ...prev, ...data }))
+    const newData = { ...formData, ...data }
+    setFormData(newData)
+    localStorage.setItem('creatorData', JSON.stringify(newData))
   }
 
   const nextStep = () => setStep((prev) => Math.min(prev + 1, 5))
   const prevStep = () => setStep((prev) => Math.max(prev - 1, 1))
+
+  const handleComplete = () => {
+    // Save default preferences along with form data
+    const completeData = {
+      ...formData,
+      fonts: defaultCreatorData.fonts,
+      colors: defaultCreatorData.colors,
+      categories: defaultCreatorData.categories
+    }
+    localStorage.setItem('creatorData', JSON.stringify(completeData))
+    navigate('/dashboard/settings')
+  }
 
   const CurrentStep = steps[step - 1].component
 
@@ -50,7 +70,7 @@ export function Onboarding() {
         <CurrentStep 
           formData={formData} 
           updateFormData={updateFormData} 
-          nextStep={nextStep} 
+          nextStep={step === 5 ? handleComplete : nextStep} 
           prevStep={prevStep} 
         />
       </div>

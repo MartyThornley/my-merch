@@ -1,0 +1,22 @@
+{
+  "mockProducts": [
+    {
+      "id": 1,
+      "name": "Roblox-themed Gaming Headset",
+      "status": "Submitted",
+      "progress": 33
+    },
+    {
+      "id": 2,
+      "name": "Custom YouTube Play Button Lamp",
+      "status": "In Progress",
+      "progress": 66
+    },
+    {
+      "id": 3,
+      "name": "Streamer's Snack Box Subscription",
+      "status": "Completed",
+      "progress": 100
+    }
+  ]
+}

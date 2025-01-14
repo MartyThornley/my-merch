@@ -5,32 +5,14 @@ import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { ThumbsUp, ThumbsDown, Repeat, MessageSquare, Sparkles } from 'lucide-react'
 import { motion } from 'framer-motion'
-
-// Placeholder for AI-generated ideas
-const placeholderIdeas = [
-  {
-    id: 1,
-    image: '/placeholder.svg',
-    description: 'Epic Roblox-themed gaming chair with built-in speakers',
-  },
-  {
-    id: 2,
-    image: '/placeholder.svg',
-    description: 'Customizable LED stream backdrop for your gaming setup',
-  },
-  {
-    id: 3,
-    image: '/placeholder.svg',
-    description: 'Roblox character-inspired wireless earbuds case',
-  },
-]
+import ideasData from '@/config/ideas.json'
 
 export function Dashboard() {
   const [currentIdeaIndex, setCurrentIdeaIndex] = useState(0)
   const [approvedIdeas, setApprovedIdeas] = useState([])
   const [declinedIdeas, setDeclinedIdeas] = useState([])
 
-  const currentIdea = placeholderIdeas[currentIdeaIndex]
+  const currentIdea = ideasData.placeholderIdeas[currentIdeaIndex]
 
   const handleSwipe = (approved) => {
     if (approved) {
@@ -38,7 +20,7 @@ export function Dashboard() {
     } else {
       setDeclinedIdeas([...declinedIdeas, currentIdea])
     }
-    setCurrentIdeaIndex((prevIndex) => (prevIndex + 1) % placeholderIdeas.length)
+    setCurrentIdeaIndex((prevIndex) => (prevIndex + 1) % ideasData.placeholderIdeas.length)
   }
 
   return (
@@ -84,4 +66,3 @@ export function Dashboard() {
     </div>
   )
 }
-

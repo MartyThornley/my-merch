@@ -73,7 +73,7 @@ export function Step4({ formData, updateFormData, nextStep, prevStep }) {
         <Button onClick={prevStep} variant="outline">
           Back
         </Button>
-        <Button onClick={nextStep} disabled={formData.images.length === 0}>
+        <Button onClick={nextStep}>
           Next
         </Button>
       </div>

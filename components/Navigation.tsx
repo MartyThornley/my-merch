@@ -4,8 +4,9 @@ import { Link, useLocation } from 'react-router-dom'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet'
-import { Home, Lightbulb, CheckSquare, Settings, BarChart, TrendingUp, Menu } from 'lucide-react'
+import { Home, Lightbulb, LogOut, CheckSquare, Settings, BarChart, TrendingUp, Menu } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import { useAuth } from '@/src/contexts/AuthContext'
 
 const navItems = [
   { name: 'Idea Factory', href: '/dashboard', icon: Lightbulb },
@@ -17,9 +18,11 @@ const navItems = [
 ]
 
 export function Navigation() {
+  const { logout } = useAuth()
   const location = useLocation()
   const [isMobile, setIsMobile] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
+  const hasCustomization = localStorage.getItem('creatorData') !== null
 
   useEffect(() => {
     const checkMobile = () => {
@@ -29,6 +32,10 @@ export function Navigation() {
     window.addEventListener('resize', checkMobile)
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
+
+  if (!hasCustomization) {
+    return null
+  }
 
   const NavContent = () => (
     <>
@@ -56,6 +63,15 @@ export function Navigation() {
           </li>
         ))}
       </ul>
+      <Button 
+        variant="ghost" 
+        size="sm" 
+        onClick={logout}
+        className="absolute bottom-0 left-2 text-gray-500 hover:text-gray-700"
+      >
+        <LogOut className="h-4 w-4 mr-2" />
+        Logout
+      </Button>
     </>
   )
 

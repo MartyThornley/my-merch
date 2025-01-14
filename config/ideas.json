@@ -1,0 +1,24 @@
+{
+  "placeholderIdeas": [
+    {
+      "id": 1,
+      "image": "/placeholder.svg",
+      "description": "Epic Roblox-themed gaming chair with built-in speakers"
+    },
+    {
+      "id": 2,
+      "image": "/placeholder.svg",
+      "description": "Customizable LED stream backdrop for your gaming setup"
+    },
+    {
+      "id": 3,
+      "image": "/placeholder.svg",
+      "description": "Roblox character-inspired wireless earbuds case"
+    }
+  ],
+  "mockIdeas": [
+    { "id": 1, "name": "Roblox-themed Gaming Headset", "status": "approved" },
+    { "id": 2, "name": "Custom YouTube Play Button Lamp", "status": "declined" },
+    { "id": 3, "name": "Streamer's Snack Box Subscription", "status": "pending" }
+  ]
+}
