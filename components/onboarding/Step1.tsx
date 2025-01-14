@@ -4,6 +4,19 @@ import { cn } from '@/lib/utils'
 
 export function Step1({ formData, updateFormData, nextStep }) {
   const creatorTypes = [
+    { 
+      type: 'Roblox Developer', 
+      icon: () => (
+        <svg 
+          viewBox="0 0 24 24" 
+          className="w-full h-full"
+          fill="currentColor"
+        >
+          <path d="M5.164 0L.16 18.928L18.836 24L23.84 5.072L5.164 0ZM16.714 15.293L10.897 13.572L8.236 7.692L14.053 9.413L16.714 15.293Z"/>
+        </svg>
+      ),
+      color: 'text-red-600' 
+    },
     { type: 'YouTuber', icon: Youtube, color: 'text-red-600' },
     { 
       type: 'TikTok Creator', 
@@ -28,18 +41,18 @@ export function Step1({ formData, updateFormData, nextStep }) {
         <p className="text-gray-500">Choose your primary content platform</p>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {creatorTypes.map(({ type, icon: Icon, color }) => (
           <Button
             key={type}
             variant={formData.creatorType === type ? 'default' : 'outline'}
             className={cn(
-              'flex flex-col items-center py-8 h-auto gap-4 transition-all',
+              'flex flex-col items-center py-2 h-auto gap-4 transition-all',
               formData.creatorType === type ? 'bg-purple-600 hover:bg-purple-700' : 'hover:bg-purple-50'
             )}
             onClick={() => updateFormData({ creatorType: type })}
           >
-            <div className={cn('w-8 h-8', formData.creatorType === type ? 'text-white' : color)}>
+            <div className={cn('w-6 h-6', formData.creatorType === type ? 'text-white' : color)}>
               <Icon />
             </div>
             <span className={cn(
