@@ -9,12 +9,12 @@ import { useState, useEffect } from 'react'
 import { useAuth } from '@/src/contexts/AuthContext'
 
 const navItems = [
-  { name: 'Idea Factory', href: '/dashboard', icon: Lightbulb },
-  { name: 'Customization', href: '/dashboard/customization', icon: Home },
+  { name: 'AI Merch Factory', href: '/dashboard', icon: Lightbulb },
   { name: 'Idea Vault', href: '/dashboard/approval-workflow', icon: CheckSquare },
-  { name: 'Creator HQ', href: '/dashboard/settings', icon: Settings },
-  { name: 'Production Lab', href: '/dashboard/production-tracker', icon: BarChart },
-  { name: 'Creator Analytics', href: '/dashboard/analytics', icon: TrendingUp },
+  { name: 'Production', href: '/dashboard/production-tracker', icon: BarChart },
+  { name: 'Analytics', href: '/dashboard/analytics', icon: TrendingUp },
+  { name: 'Customization', href: '/dashboard/customization', icon: Home },
+  { name: 'Account', href: '/dashboard/settings', icon: Settings },
 ]
 
 export function Navigation() {
