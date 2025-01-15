@@ -5,44 +5,44 @@ const fontStyles = {
   modern: {
     name: 'Modern',
     description: 'Clean and contemporary',
-    fonts: ['Inter', 'Roboto', 'Open Sans'],
+    fonts: ['font-inter', 'font-roboto', 'font-openSans'],
     sample: 'The quick brown fox jumps over the lazy dog',
-    headerFont: 'Inter'
+    headerFont: 'font-inter'
   },
   technical: {
     name: 'Technical',
     description: 'Professional and precise',
-    fonts: ['JetBrains Mono', 'Source Code Pro', 'Fira Code'],
+    fonts: ['font-jetBrainsMono', 'font-sourceCodePro', 'font-firaCode'],
     sample: 'The quick brown fox jumps over the lazy dog',
-    headerFont: 'JetBrains Mono'
+    headerFont: 'font-jetBrainsMono'
   },
   playful: {
     name: 'Playful',
     description: 'Fun and energetic',
-    fonts: ['Fredoka', 'Comic Neue', 'Bubblegum Sans'],
+    fonts: ['font-fredoka', 'font-comicNeue', 'font-bubblegumSans'],
     sample: 'The quick brown fox jumps over the lazy dog',
-    headerFont: 'Fredoka'
+    headerFont: 'font-fredoka'
   },
   elegant: {
     name: 'Elegant',
     description: 'Sophisticated and refined',
-    fonts: ['Playfair Display', 'Cormorant', 'Libre Baskerville'],
+    fonts: ['font-playfairDisplay', 'font-cormorant', 'font-libreBaskerville'],
     sample: 'The quick brown fox jumps over the lazy dog',
-    headerFont: 'Playfair Display'
+    headerFont: 'font-playfairDisplay'
   },
   bold: {
     name: 'Bold',
     description: 'Strong and impactful',
-    fonts: ['Montserrat', 'Raleway', 'Poppins'],
+    fonts: ['font-montserrat', 'font-raleway', 'font-poppins'],
     sample: 'The quick brown fox jumps over the lazy dog',
-    headerFont: 'Montserrat'
+    headerFont: 'font-montserrat'
   },
   retro: {
     name: 'Retro',
     description: 'Vintage and nostalgic',
-    fonts: ['Press Start 2P', 'VT323', 'Pixel'],
+    fonts: ['font-pressStart2P', 'font-vt323', 'font-pixel'],
     sample: 'The quick brown fox jumps over the lazy dog',
-    headerFont: 'Press Start 2P'
+    headerFont: 'font-pressStart2P'
   }
 }
 
@@ -65,31 +65,26 @@ export function Step3({ formData, updateFormData, nextStep, prevStep }) {
           >
             <div className="flex flex-col items-start w-full">
               <span 
-                className="font-semibold text-left text-lg"
-                style={{ fontFamily: style.headerFont }}
+                className={`font-semibold text-left text-lg ${style.headerFont}`}
               >
                 {style.name}
               </span>
-              <span className="text-sm opacity-90">{style.description}</span>
+              <span className={`text-sm opacity-90 ${style.headerFont}`}>{style.description}</span>
             </div>
-            <div className="w-full mt-2 space-y-2">
+            {/* <div className="w-full mt-2 space-y-2 text-wrap text-left">
               {style.fonts.map((font) => (
                 <div
                   key={font}
                   className={cn(
-                    'text-sm p-2 rounded',
-                    formData.fontPreference === key ? 'bg-purple-700/50' : 'bg-gray-100'
+                  'text-sm p-2 rounded',
+                  formData.fontPreference === key ? 'bg-purple-700/50' : 'bg-gray-100',
+                  font
                   )}
-                  style={{ 
-                    fontFamily: font,
-                    fontSize: font === 'Press Start 2P' ? '0.7rem' : '0.875rem',
-                    lineHeight: font === 'Press Start 2P' ? '1.5' : '1.25'
-                  }}
                 >
                   {style.sample}
                 </div>
               ))}
-            </div>
+            </div> */}
           </Button>
         ))}
       </div>
