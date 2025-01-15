@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto:wght@400;500;700&family=Open+Sans:wght@400;600&family=JetBrains+Mono:wght@400;600&family=Source+Code+Pro:wght@400;600&family=Fira+Code:wght@400;600&family=Fredoka:wght@400;600&family=Comic+Neue:wght@400;700&family=Bubblegum+Sans&family=Playfair+Display:wght@400;600&family=Cormorant:wght@400;600&family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@400;600&family=Raleway:wght@400;600&family=Poppins:wght@400;600&family=Press+Start+2P&family=VT323&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -74,26 +76,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
-
-body {
-  font-family: 'Fredoka', sans-serif;
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
