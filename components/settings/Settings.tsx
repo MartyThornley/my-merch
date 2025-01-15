@@ -1,14 +1,27 @@
 'use client'
 
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
-import { Save } from "lucide-react"
+import { Save, Trash2 } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
 
 export function Settings() {
   const { toast } = useToast()
+  const navigate = useNavigate()
   const [formData, setFormData] = useState(() => {
     const savedData = localStorage.getItem('creatorData')
     return savedData ? JSON.parse(savedData) : {
@@ -31,6 +44,15 @@ export function Settings() {
       title: "Success",
       description: "Your profile has been updated",
     })
+  }
+
+  const handleDeleteData = () => {
+    localStorage.removeItem('creatorData')
+    toast({
+      title: "Data Deleted",
+      description: "All customization data has been removed",
+    })
+    navigate('/dashboard/customization')
   }
 
   return (
@@ -67,6 +89,33 @@ export function Settings() {
               placeholder="your@email.com" 
             />
           </div>
+        </div>
+
+        <div className="border-t pt-6 mt-6">
+          <h3 className="text-lg font-semibold text-red-600 mb-4">Danger Zone</h3>
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button variant="destructive" className="w-full sm:w-auto">
+                <Trash2 className="w-4 h-4 mr-2" />
+                Delete All Customization Data
+              </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  This action cannot be undone. This will permanently delete all your customization data
+                  including your font preferences, color choices, and other settings.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction onClick={handleDeleteData} className="bg-red-600 hover:bg-red-700 text-white font-bold">
+                  Delete Data
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         </div>
       </div>
     </div>
